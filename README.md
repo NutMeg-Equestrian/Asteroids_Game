@@ -1,0 +1,2 @@
+Learning Notes (abbrev. LN with file location):
+player.py line 7 LN1: This really confused me but Boots explained it as CircleShape needs to know where (x,y) and what size, radius. For the subclass Player, what size will aways be the same but where can change. So when we initialze Player all it expects is x and y. We use the super().__init__(x,y, PLAYER_RADIUS) to help bridge the gap between Player and CircleShape by telling CircleShape that radius is constant (and what that radius is). (Where the constant is in the "from constants import *" bit).

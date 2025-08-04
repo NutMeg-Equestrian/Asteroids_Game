@@ -1,5 +1,6 @@
 import pygame
-from constants import * 
+from constants import *
+from player import *
 
 def main():
     print(f"Starting Asteroids!\nScreen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
@@ -8,13 +9,18 @@ def main():
     dt = 0
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        screen.fill("black")
-        pygame.display.flip()
+
         dt = clock.tick(60)/1000 #we call the tick method on clock (our time/clock object) the 60 pauses the loop until 1/60th of a second has passed since the last loop
+        screen.fill("black")
+        player.draw(screen)
+        player.update(dt)
+        pygame.display.flip()
+        dt = clock.tick(60)/1000
 
 if __name__ == "__main__":
     main()
